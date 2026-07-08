@@ -1,0 +1,22 @@
+<h1>Welcome Client</h1>
+
+<h2>Your Account Details</h2>
+
+<p id="user"></p>
+
+
+<script>
+
+fetch("http://localhost:3000/users")
+
+.then(response => response.json())
+
+.then(data => {
+
+    document.getElementById("user").innerHTML =
+    "Name: " + data[0].fullname +
+    "<br>Email: " + data[0].email;
+
+});
+
+</script>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Client Registration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+</form><form id="registerForm">
+
+<input type="text" id="fullname" placeholder="Full Name" required>
+
+<br><br>
+
+<input type="email" id="email" placeholder="Email" required>
+
+<br><br>
+
+<input type="password" id="password" placeholder="Password" required>
+
+<br><br>
+
+<button type="submit">
+Register
+</button>
+
+</form>
+
+
+<script>
+document.getElementById("registerForm").addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    fetch("http://localhost:3000/register", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            fullname: document.getElementById("fullname").value,
+            email: document.getElementById("email").value,
+            password: document.getElementById("password").value
+        })
+    })
+
+    .then(response => response.text())
+    .then(data => {
+        alert(data);
+    });
+
+});
+</script>
+
+</body>
+
+</html>
